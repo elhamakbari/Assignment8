@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Assignment 8 - Part 2.Selection Slideshow</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style>
+        main {margin: 0px auto; height: 500px; width: 500px;}
+        img {width: 350px; height: 250px; display: block; margin: 0 auto;}
+        h1, h2 {text-align: center;}
+        #numbers {margin-left: 80px;}
+        #numbers li {list-style-type: none; display: inline-block; padding: 5px;}
+        #numbers li a {color: black; text-decoration: none;}
+        .blue {color: darkblue !important; font-weight: bolder;}
+        .gray {color: lightgrey !important;}
+    </style>
+</head>
+    
+<body>
+    <main>
+        <h1>Apple Pie</h1>
+        <h2 id="caption">How to make it step by step / enjoy</h2>
+        <div id="slides">
+            <img src="images/image1.gif" alt="1">
+            <img src="images/image2.gif" alt="2">
+            <img src="images/image3.gif" alt="3">
+            <img src="images/image4.gif" alt="4">
+            <img src="images/image5.gif" alt="5">
+            <img src="images/image6.gif" alt="6">
+            <img src="images/image7.gif" alt="7">
+            
+        </div>
+        <ul id="numbers">
+            <li><a href="#" id="1">01</a></li>
+            <li><a href="#" id="2">02</a></li>
+            <li><a href="#" id="3">03</a></li>
+            <li><a href="#" id="4">04</a></li>
+            <li><a href="#" id="5">05</a></li>
+            <li><a href="#" id="6">06</a></li>
+            <li><a href="#" id="7">07</a></li>
+            
+        </ul>
+        
+    </main>
+    
+    
+    <script>
+        $(document).ready(function() {
+            var current, correspondingAId, nextSlide = $("#slides img:visible");;
+            
+            $("#slides img").hide();
+            $("#slides img:first-child").show();
+            current = $("#slides img:first-child");
+            
+            $("li a").addClass("gray");
+            $("#1").removeClass("gray").addClass("blue");
+            
+            
+            
+            var slideshow = function() {
+                    $(current).fadeOut(1000, function() {
+                        
+                        if (current.attr("alt") === "9") {
+                            nextSlide = $("#slides img:first-child");
+                        } else {
+                            nextSlide = current.next();
+                        }
+                        nextSlide.fadeIn(1000);
+                        
+                        correspondingAId = nextSlide.attr("alt");
+                        $("#" + correspondingAId).removeClass("gray").addClass("blue");
+                        $("li a:not(#" + correspondingAId + ")").removeClass("blue").addClass("gray");
+                        current = nextSlide;
+                        
+                        console.log(current.attr("alt"));
+                    });  
+                
+                };
+            
+            
+            var timer = setInterval(slideshow, 2000);
+            
+            $("li a").on("click", function() {
+                clearInterval(timer);
+                
+                $(this).addClass("blue").removeClass("gray");
+                $("li a").not(this).removeClass("blue").addClass("gray");
+                
+                imageCounter = $(this).attr("id");
+                nextImage = $("img[alt*='"+imageCounter+"']");
+                $("#slides img:visible").fadeOut(1000, function() {
+                    $(nextImage).fadeIn(1000);
+                    $("#slides img").not(nextImage).hide();
+                });
+ 
+            });
+        });
+    
+    </script>
+</body>
+</html>

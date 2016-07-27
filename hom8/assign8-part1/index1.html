@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Assignment 8 . Part 1</title>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+
+    <!--STEP 1.	Create a button on a web page. Use the .click() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+
+    <input type="button" id="btn" value="Step 1 Button">
+
+    <script>
+    $(document).ready(function() {
+        $("#btn").click(function() {
+            window.alert("Button was clicked");
+        });
+    });
+    </script>
+
+    <!--STEP 2.	Create a button on a web page. Attach the click event using the .bind() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+
+   <input type="button" id="btn2" value="Step 2 Button">
+   
+   <script>
+    $(document).ready(function() {
+        $("#btn2").bind("click", function(event) {
+            window.alert("Button 2 was clicked");
+        });
+    });
+    </script>
+   
+    <!--STEP 3.	Create a button on a web page. Attach the click event using the .on() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+    
+    <input type="button" id="btn3" value="Step 3 Button">
+    
+     <script>
+    $(document).ready(function() {
+        $("#btn3").on("click", function(event) {
+            window.alert("Button 3 was clicked");
+        });
+    });
+    </script>
+
+    <!--STEP 4.	Create two buttons on a web page. -->
+    
+    <br><br>
+    <input type="button" id="btn4" value="Step 4 Button(1)">
+    <input type="button" id="btn41" value="Step 4 Button(2)">
+    
+     <script>
+    $(document).ready(function() {
+        $("#btn4, #btn41").on("click", function(event) {
+            window.alert("Button 4 was clicked");
+        });
+    });
+    </script>
+
+    <!--STEP 5.	Create a div on a web page. Use jQuery to set the div element to 400px wide and 400px high -->
+    
+    <br><br>
+    <div id="step5div"></div>
+    
+    <script>
+    $(document).ready(function() {
+        $("#step5div").css("background-color", "purple").width("400px").height("300px");
+        
+    /*  $("#step5div").on("click", function(event) {
+            window.alert("You clicked the div.");
+        });
+        
+        $("#step5div").on("mouseenter", function(event) {
+            window.alert("Your mouse entered the div.");
+        });
+        
+        $("#step5div").on("mouseleave", function(event) {
+            window.alert("The mouse has left the div.");
+        });*/
+    });
+    </script>
+
+    <!--STEP 6.	Rewrite the code from number 5.-->
+    
+        <script>
+    $(document).ready(function() {
+        
+        $("#step5div").append("<span></span>").css("color", "white");
+        
+        $("#step5div").on("click", function(event) {
+            $("span").replaceWith("<span>You clicked the div.</span>");
+        });
+        
+        $("#step5div").on("mouseenter", function(event) {
+            $("span").replaceWith("<span>Your mouse entered the div.</span>");
+        });
+        
+        $("#step5div").on("mouseleave", function(event) {
+            $("span").replaceWith("<span>The mouse has left the div.</span>");
+        });
+        
+    });
+    </script>
+
+    <!--STEP 7.	Create a link within the web page and set its href attribute to browse to google.com-->
+    
+    <br>
+    <a href="http://www.google.com">Step 7 / Link</a>
+
+    <script>
+    $(document).ready(function(event) {
+        $("a").on("click", function(event) {
+            event.preventDefault();
+            $("a").css("color", "red");
+            window.alert(event.currentTarget.nodeName.toLowerCase());
+        })
+    });
+    </script>
+
+    <!--STEP 8.	Create a div tag within the web page.-->
+    
+    <br><br>
+    <div id="step8div"></div>
+    
+    <script>
+    $(document).ready(function(event) {
+        $(window).resize(function() {
+            $("#step8div").text("The width is: " + $(window).width());
+            $("#step8div").append("\nThe height is: " + $(window).height());
+        });
+    });
+    </script>
+
+    <!--STEP 9.	Create a text field using the <input> tag.-->
+    
+    <br><br>
+    <input id="textBox" type="text" placeholder="Step 9 / text field">
+    
+    <script>
+    $(document).ready(function(event) {
+        $("#textBox").focusin(function() {
+            $("#textBox").css("background-color", "lightgrey");
+        })
+        $("#textBox").focusout(function() {
+            $("#textBox").css("background-color", "white");
+        })
+    });
+    </script>
+
+    <!--STEP 10.	Add a form tag within a web page complete with 2 input fields-->
+
+    <br><br>
+    <form>
+        <input id="name" type="text" placeholder="Name">
+        <input id="email" type="text" placeholder="Email">
+        <button id="submit" type="button">Submit</button>
+    </form>
+
+    <script>
+    $(document).ready(function(event) {
+        $("#submit").on("click", function() {
+            
+            if ($("#name").val().length === 0 && $("#email").val().length === 0) {
+                $("#name").css("border-color", "red");
+                $("#email").css("border-color", "red");
+                 window.alert("Please fill in the form before submitting");
+            } else if ($("#name").val().length === 0) {
+                $("#name").css("border-color", "red");
+                window.alert("Your name is required");
+            } else if ($("#email").val().length === 0) {
+                $("#email").css("border-color", "red");
+                window.alert("Your email is required");
+            } else {
+                $("#name").css("border-color", "green");
+                $("#email").css("border-color", "green");
+            }
+        })
+    });
+    </script>
+</body>
+
+</html>

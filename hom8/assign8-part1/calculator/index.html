@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Lab 2 - Calculator III </title>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+	<input type="text" readonly id="result">
+    <br>
+    <div id="container">
+        <input type="button" id="seven" value="7">
+        <input type="button" id="eight" value="8">
+        <input type="button" id="nine" value="9">
+        <input type="button" id="divide" value="/">
+        <br>
+        <input type="button" id="four" value="4">
+        <input type="button" id="five" value="5">
+        <input type="button" id="six" value="6">
+        <input type="button" id="multiply" value="*">
+        <br>
+        <input type="button" id="one" value="1">
+        <input type="button" id="two" value="2">
+        <input type="button" id="three" value="3">
+        <input type="button" id="subtract" value="-">
+        <br>
+        <input type="button" id="zero" value="0">
+        <input type="button" id="period" value=".">
+        <input type="button" id="add" value="+">
+    </div>
+    <input type="button" id="equal" value="=">
+    
+    <script>
+// STEP 1. 
+        
+// STEP 2. 
+        
+// STEP 3. 
+        
+        $(document).ready(function() { 
+            $("input:button").width("50px").height("20px").css({
+                "background-color": "lightblue",
+                "border": "1px solid black",
+                "margin": "2px"});
+            
+            $("input:text").width("288px").height("30px").css({
+                "background-color": "lightgray",
+                "border": "1px solid darkblue",
+                "color": "black",
+                "font-size": "1.5em",
+                "padding-left": "5px"});
+    
+            $("#container").on("click", function createString(event) {
+                var getField = $("#result").val();
+                
+                if (getField === "") {
+                   $("#result").val(event.target.value); 
+                } else if (getField !== "") {
+                    var newNum = getField + event.target.value;
+                    $("#result").val(newNum);
+                };
+            });
+            
+            $("#equal").on("click", function(event) {     
+                var calculationString = $("#result").val();
+                $("#result").val(eval(calculationString));
+            });
+        });
+    </script>
+</body>
+</html>

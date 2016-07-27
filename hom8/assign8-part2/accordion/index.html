@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 8- Part 2- Accordion</title>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <link rel="stylesheet" href="icono.min.css">
+        <style>
+            * {margin: 0; padding: 0;}
+            main {width: 500px; height: 500px; margin: 20px auto;}
+            section {border: solid 1px darkgray; background-color: #E8E8E8; border-radius: 10px 10px 0 0;}
+            div h4 {float: left; margin-top: 10px; margin-left: 20px; font-family: sans-serif; font-weight: 600;}
+            .defaultDiv {background-color: teal; border-radius: 10px 10px 0 0; height: 40px; display: block; position: relative; border: solid 1px black; color: white; font-weight: 400;}
+            .activeDiv {background-color: green; height: 40px; display: block; position: relative; border: solid 1px black; color: white; font-weight: 400;}
+            p {padding: 10px; color: teal; background-color: #E8E8E8; display: block;}
+            .icono-caretRightCircle {float: left; left: 10px; top: 2px;}
+            .icono-caretDownCircle {float: left; left: 10px; top: 2px; background-color: darkgreen;}
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <section>
+                <div id="one" class="defaultDiv">
+                   
+                    <div id="oneIcon" class="icono-caretRightCircle"></div>
+                    <h4>SDSU</h4> 
+                </div>
+                <p id="paraOne">
+                    SDSU provides transformative experiences for students in research, international experiences, sustainability and entrepreneurship initiatives, and a broad range of student life and leadership opportunities.
+                </p>
+            </section>
+            <section>
+                <div id="two" class="defaultDiv">
+                   
+                    <div id="twoIcon" class="icono-caretRightCircle"></div>
+                    <h4>New Student Orientations</h4>
+                </div>
+                <p id="paraTwo">
+                    SDSU invite you to explore the multitude of opportunities available to our students, through the academic and professional programs within our five schools of instruction. We're here to help and serve you!
+                </p>
+            </section>
+            <section>
+                <div id="three" class="defaultDiv">
+                    
+                    <div id="threeIcon" class="icono-caretRightCircle"></div>
+                    <h4>Register for Classes &sup1;</h4>
+                </div>
+                
+                <p id="paraThree">
+                   Steps to Register:
+View your registration date and time, fee payment information, and registration holds through "My Registration" in your SDSU WebPortal. If you have not yet created a portal account, follow the instructions on this page. You must have a working email address to activate an account.
+Pay your fees by your fee payment deadline and clear any registration holds shown. Details are provided at "My Registration."
+Plan your class schedule by using the "My Planner" function in WebPortal
+Use the registration tools through "My Registration" in the WebPortal to register online at your assigned date and time. Pay attention to the registration limits.
+                </p>
+            </section>
+        </main>
+        
+        
+        <script>
+        $(document).ready(function() {
+            $("p").hide();
+            
+            $("div").on("click", function() {
+               if ( $(this).hasClass("defaultDiv")) {
+                   $(this).siblings("p").slideDown();
+                   $("div", this).removeClass("icono-caretRightCircle").addClass("icono-caretDownCircle");
+                   $(this).removeClass("defaultDiv").addClass("activeDiv");
+                   console.log("Option 1");
+                } else if ($(this).hasClass("activeDiv")) {
+                    $(this).siblings("p").slideUp();
+                    $("div", this).removeClass("icono-caretDownCircle").addClass("icono-caretRightCircle");
+                    $(this).removeClass("activeDiv").addClass("defaultDiv");
+                    console.log("Option 2");
+                }
+           });
+        });
+        </script>
+    </body>
+</html>

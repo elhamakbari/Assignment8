@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 8 - Part 2. Tabbed Menu Bar</title>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <style>
+            * {margin: 0; padding: 0;}
+            body {background-color: #DBDBDB;}
+            main {margin: 0px auto; width: 960px; height: 500px; background-color: #DBDBDB; padding: 20px;}
+            div {border: solid 1px black; background-color: white; height: 300px;}
+            nav {list-style-type: none;}
+            ul {padding-left: 20px;  background-color: #DBDBDB; margin: 10px; border-radius: 5px;}
+            li {list-style-type: none; display: inline-block; padding: 7px; background-color: #EBEBEB; margin: 10px 5px 0 0; margin-bottom: 0; border-radius: 5px;}
+            section {margin: 10px;}
+            h4 {margin-bottom: 10px;}
+            .white {background-color: white; font-weight: bold;}
+        </style>
+    </head>
+
+    <body>
+        <main>
+           <div>
+                <nav>
+                    <ul>
+                        <li>Learning Outcomes</li>
+                        <li>Learning Modules</li>
+                        <li>Instructor Bio</li>
+                    </ul>
+                </nav>
+                <section>
+                    <section id="outcomes">
+                        <h4>Learning Outcomes</h4>
+                    Learning outcomes are statements of what students will learn in a class or in a class session. The statements are focused on student learning (What will students learn today?) rather than instructor teaching (What am I going to teach today?). These statements should include a verb phrase and an impact ("in order to") phrase -- what students will do/be able to do and how they will apply that skill or knowledge. There are some verbs to avoid when writing learning outcomes. These verbs are vague and often not observable or measurable. For example, how would you measure whether someone has "become familiar with" a particular tool? Use a more specific verb. If you want students to "understand" something, think more closely about what you want them to be able to do or produce as a result of their "understanding."
+                    
+                    </section>
+                    <section id="modules">
+                        <h4>Learning Modules</h4>
+                    Learning Module is a tool that provides course materials in a logical, sequential, order, guiding students through the content and assessments in the order specified by the instructor. Instructors can insert formatted text, files, weblinks, Discussion Topics, Assignments, Tests and Quizzes, and soon, Assessments. Content can be structured in such a way as to require students to complete content before they are allowed to proceed to the next content. It is also possible for instructors to set up a place for students to add content to the Learning Module.
+                        
+                    </section>
+                    <section id="bio">
+                        <h4>Instructor Bio</h4>
+                    Stephen Andrew, LCSW, LADC, CCS, CGP, is a storyteller, trainer and the Chief Energizing Officer of Health Education Training Institute. He maintains a compassion-focused private practice in Portland, Maine, where he also facilitates a variety of young person, men’s, co-ed, couples and caregiver groups. Stephen has been a member of the International Motivational Interviewing Network of Trainers (MINT) since 2003. He has been a MIA-STEP trainer (Motivational Interviewing Assessment; Supervisor Training Program) for the New England ATTC since 2007. Stephen has been Motivational Interviewing Treatment Integrity trained and has over 100 hours of training in Motivational Interviewing. Stephen provides coaching and training domestically and internationally (Singapore, China, Holland, Sweden, Turkey and UK) for social service agencies, health-care providers, substance abuse counselors, criminal justice and other groups on motivational interviewing, addiction, co-occurring disorders, counseling theory, “challenging” adolescents, supervision and ethics for care professionals, men’s work and the power of group work, as well as supervising a coding/ coaching laboratory and training for Motivational Interviewing.  Stephen is the proud father of an 18 year-old son, Sebastian and co-author of Game Plan: A Man’s Guide to Achieving Emotional Fitness.
+                    </section>
+                </section>
+            </div>
+        </main>
+        
+        <script>
+        $(document).ready(function() {
+            $("#modules").hide();
+            $("#bio").hide();
+            $("li:first-child").addClass("white");
+            
+            $("li:first-child").on("click", function() {
+                $("li:first-child").addClass("white");
+                $("li:not(:first-child)").removeClass("white");
+                $("#outcomes").show();
+                $("#modules").hide();
+                $("#bio").hide();
+                
+            });
+            
+            $("li:nth-child(2)").on("click", function() {
+                $("li:nth-child(2)").addClass("white");
+                $("li:not(:nth-child(2))").removeClass("white");
+                $("#outcomes").hide();
+                $("#modules").show();
+                $("#bio").hide();
+            });
+            
+            $("li:last-child").on("click", function() {
+                $("li:last-child").addClass("white");
+                $("li:not(:last-child)").removeClass("white");
+                $("#outcomes").hide();
+                $("#modules").hide();
+                $("#bio").show();
+            });
+        });
+        </script>
+    </body>
+</html>
